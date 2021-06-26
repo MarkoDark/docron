@@ -12,23 +12,65 @@ do
     case ${user,,} in
 
         add)
-            python3 /usr/tools/docron/dadd.py || ./dadd.py
-            ;;
+            if [ -f /usr/tools/docron/dadd.py ]; then
+                python3 /usr/tools/docron/dadd.py
+            elif [ -f ./dadd.py ]; then
+                python3 ./dadd.py
+            else
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+                echo "|-- Error: File not found! --|"
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+            fi
+                ;;
         @)
-            python3 /usr/tools/docron/dadd_at.py || ./dadd_at.py
-            ;;
-            
+            if [ -f /usr/tools/docron/dadd_at.py ]; then
+                python3 /usr/tools/docron/dadd_at.py
+            elif [ -f ./dadd_at.py ]; then
+                python3 ./dadd_at.py
+            else
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+                echo "|-- Error: File not found! --|"
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+            fi
+                ;;
+
         delete)
-            python3 /usr/tools/docron/ddelete.py || ./ddelete.py
-            ;;
+            if [ -f /usr/tools/docron/ddelete.py ]; then
+                python3 /usr/tools/docron/ddelete.py
+            elif [ -f ./ddelete.py ]; then
+                python3 ./ddelete.py
+            else
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+                echo "|-- Error: File not found! --|"
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+            fi
+                ;;
+
+
 
         view)
-            python3 /usr/tools/docron/dview.py || ./dview.py
-            ;;
+            if [ -f /usr/tools/docron/dview.py ]; then
+                python3 /usr/tools/docron/dview.py
+            elif [ -f ./dview.py ]; then
+                python3 ./dview.py
+            else
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+                echo "|-- Error: File not found! --|"
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+            fi
+                ;;
 
         help)
-            echo "$(cat /usr/tools/docron/dhelp.txt)" || echo "$(cat ./dhelp.txt)"
-            ;;
+            if [ -f /usr/tools/docron/dhelp.txt ]; then
+                echo "$(cat /usr/tools/docron/dhelp.txt)"
+            elif [ -f ./dhelp.txt ]; then
+                echo "$(cat ./dhelp.txt)"
+            else
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+                echo "|-- Error: File not found! --|"
+                for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+            fi
+                ;;
 
         exit)
             for i in {1..30}; do printf '%s' '-'; done; printf '\n'
@@ -40,6 +82,7 @@ do
             for i in {1..30}; do printf '%s' '-'; done; printf '\n'
             echo "> Whatever you did was not nice..."
             for i in {1..30}; do printf '%s' '-'; done; printf '\n'
+            ;;
     esac
 
 done
